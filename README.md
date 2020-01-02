@@ -43,4 +43,5 @@ In this case we will need to set up a storage, which is more challenging in the 
 
 A typical app that needs to be stateful is a database. For the demonstration, we will make the Ping-pong app to count the amount of pings it got.  
 The results will be stored in a Redis DB:
+https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v3_stateful_app_with_redis_ping_count
 
