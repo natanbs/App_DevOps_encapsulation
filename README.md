@@ -25,3 +25,22 @@ This workshop will guide to implement the following technologies:
 - Monitoring - Prometheus & Grafana 
 - Ingress
 
+## Ping-pong app
+We will use a simple Flask app that will return pong to a ping request:
+https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v1_flask_app
+
+## Containerise
+Then we will containerise the app:
+https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v2_containerized_flask_app
+
+## Stateless vs stateful
+A stateless app component is an app that does not read not write data. With this type of app, we can run many dockers and we don't care if they die.
+This concept is essential to understand when we need scalability where we can add or kill dockers according to the usage needs. 
+Another implications example is the  rollouts/roll backs where you can incremenly add new dockers with a new version, while incrementsly remove old version ones. 
+
+Statefull app in the other hand reads or stores data. This means we need to know where the data is and which makes the application less portable.
+In this case we will need to set up a storage, which is more challenging in the containerised concept and even more with kubernetes.
+
+A typical app that needs to be stateful is a database. For the demonstration, we will make the Ping-pong app to count the amount of pings it got.  
+The results will be stored in a Redis DB:
+
