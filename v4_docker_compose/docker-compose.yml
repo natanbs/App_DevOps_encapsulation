@@ -1,0 +1,18 @@
+services:
+  web:
+    image: flask-ping:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: ping-flask
+    container_name: ping-flask
+    ports:
+    - '5000:5000'
+
+  redis:
+    image: redis
+    hostname: ping-redis
+    container_name: ping-redis
+    ports:
+    - '6379:6379'
+version: '3.7'

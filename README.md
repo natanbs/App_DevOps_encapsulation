@@ -42,6 +42,17 @@ Statefull app in the other hand reads or stores data. This means we need to know
 In this case we will need to set up a storage, which is more challenging in the containerised concept and even more with kubernetes.
 
 A typical app that needs to be stateful is a database. For the demonstration, we will make the Ping-pong app to count the amount of pings it got.  
-The results will be stored in a Redis DB:
+The results will be stored in a Redis DB. In this case, if the redis docker fails, the data is lost. Later on we will learn how to maintain the data (pv / pvc)..
 https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v3_stateful_app_with_redis_ping_count
+
+# Docker-compose
+In the previous scenario, we had to run the flask and the redis dockers manually.
+Docker-compose allow you to have both dockers set in one files and with one command start all the whole env with all the components of the application:
+
+docker-compose up -d    # Will read the docker-compose.yml and start all the dockers of the env.
+
+The -d flags sets it as a deamon to run in the background.
+
+docker-compose down will shut down the whole env.
+
 
