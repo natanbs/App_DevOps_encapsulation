@@ -55,4 +55,4 @@ The -d flags sets it as a deamon to run in the background.
 
 docker-compose down will shut down the whole env.
 
-
+https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v4_docker_compose
