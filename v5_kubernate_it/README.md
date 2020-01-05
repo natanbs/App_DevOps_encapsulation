@@ -6,6 +6,8 @@ Kubernates with Flask apps that query ping to a Redis db (separate pods) and ret
 In this exaple we used 3 replicas that can be canged within deploy file with the parameter:
 replicas: 3
 
+The env is created in the namespace ping-ns (namespace.yml)
+
 To run the app run the commands:
 
 ```bash
@@ -15,7 +17,7 @@ To run the app run the commands:
 
 To check the service IP:
 ```bash
-        kubectl get svc | grep flask | awk '{print $4}'
+        kubectl get svc -n ping-ns | grep flask | awk '{print $4}'
 ```
 
 After the containers are up and running, go to the url:

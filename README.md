@@ -29,7 +29,7 @@ This workshop will guide to implement the following technologies:
 We will use a simple Flask app that will return pong to a ping request:
 https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v1_flask_app
 
-## Containerise
+## Containerise it!
 Then we will containerise the app:
 https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v2_containerized_flask_app
 
@@ -51,11 +51,26 @@ Docker-compose allow you to have both dockers set in one files and with one comm
 
 https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v4_docker_compose
 
-## Kubernate it!
+## Kubernate it ;-)
 Now we will migrate the docker-compose to Kubernetes. We will create separate deploy and service file for the app and the db.
 This will create each component in a separate pod, yet in the same cluster. 
 This will also allow to crerate multiple replicates of the stateless Flask pods while the Redis will have one stateful pod.
 In the example bellow we will deploy 3 replicas of the Falsk pod and one Redis pod. 
 
 https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v5_kubernate_it
+
+The problem here is that if the redis pod fails, you lose all your data, which is the weakness of a stateful app.
+With this we proceed to the next session.
+
+## PersistentVolume (pv) and PersistentVolumeClaims (pvc)
+In the previous session if you re-installed the app (or just restarted redis), the data would be lost (ping counts will start all over again).
+This is because the data is held within the redis pod. Once the redis dies, the data dies with it.
+
+In order to keep your data safe, we need a mechanism that will keep the data outside of the cluster.
+This mechanism inclused two layers:
+pv  - A direct communication layer to the storage protocol (like NFS/iSCSI etc). The pv is not attached to any namespace.
+pvc - The logical layer that communicates between the pod and the pv. This layer runs in the namespace scope.
+
+Once the pv and pvc and set, then you can set the volume parameters within the pod in the deploy-redis.yml file.
+
 
