@@ -1,6 +1,6 @@
 ## App_DevOps_encapsulation
 
-So you your app is app and running, now you want to optimise it. You want the benefit the following:
+So your app is app and running, now you want to optimise it. You want the benefit the following:
 
 - Portability - Deploy anywhere
 - Isolation - Independency
@@ -41,7 +41,7 @@ Another implications example is the  rollouts/roll backs where you can incremenl
 Statefull app in the other hand reads or stores data. This means we need to know where the data is and which makes the application less portable.
 In this case we will need to set up a storage, which is more challenging in the containerised concept and even more with kubernetes.
 
-A typical app that needs to be stateful is a database. For the demonstration, we will make the Ping-pong app to count the amount of pings it got.  
+A typical app that needs to be stateful is a database. For the demonstration, we will make the Ping-pong app to count the amount of ping requests it got.  
 The results will be stored in a Redis DB. In this case, if the redis docker fails, the data is lost. Later on we will learn how to maintain the data (pv / pvc)..
 https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v3_stateful_app_with_redis_ping_count
 
@@ -56,3 +56,5 @@ The -d flags sets it as a deamon to run in the background.
 docker-compose down will shut down the whole env.
 
 https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v4_docker_compose
+
+
