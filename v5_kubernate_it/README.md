@@ -3,6 +3,9 @@
 
 Kubernates with Flask apps that query ping to a Redis db (separate pods) and returns pong counts.
 
+In this exaple we used 3 replicas that can be canged within deploy file with the parameter:
+replicas: 3
+
 To run the app run the commands:
 
 ```bash
