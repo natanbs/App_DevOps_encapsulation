@@ -49,12 +49,6 @@ https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v3_stateful_app_
 In the previous scenario, we had to run the flask and the redis dockers manually.
 Docker-compose allow you to have both dockers set in one files and with one command start all the whole env with all the components of the application:
 
-docker-compose up -d    # Will read the docker-compose.yml and start all the dockers of the env.
-
-The -d flags sets it as a deamon to run in the background.
-
-docker-compose down will shut down the whole env.
-
 https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v4_docker_compose
 
 ## Kubernate it!
@@ -62,4 +56,6 @@ Now we will migrate the docker-compose to Kubernetes. We will create separate de
 This will create each component in a separate pod, yet in the same cluster. 
 This will also allow to crerate multiple replicates of the stateless Flask pods while the Redis will have one stateful pod.
 In the example bellow we will deploy 3 replicas of the Falsk pod and one Redis pod. 
+
+https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v5_kubernate_it
 
