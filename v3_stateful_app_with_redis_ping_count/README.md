@@ -7,7 +7,7 @@ To run the app run the commands:
 
 ```bash
 	docker build -t flask-ping:latest .                      # Build Flask docker image
-	docker run -d -p 5000:5000 --name Ping-flask flask-ping  # Run the Flask container
+	docker run -d -p 5000:5000 --name ping-flask flask-ping  # Run the Flask container
 	docker run -p 6379:6379 -d --name ping-redis redis       # Run a docker Redis image 
 ```
 

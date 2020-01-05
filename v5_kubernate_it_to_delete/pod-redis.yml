@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-pod
+  labels:
+    zone: prod
+    version: v1
+    app: web
+spec:
+  containers:
+  - name: ping-redis
+    image: redis
+    ports:
+    - containerPort: 6379
+

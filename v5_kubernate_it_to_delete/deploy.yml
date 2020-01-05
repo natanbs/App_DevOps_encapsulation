@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ping-deploy
+spec:
+  replicas: 1
+  minReadySeconds: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: ping-flask
+    spec:
+      containers:
+      - name: ping-flask
+        image: natanbs/flask-ping:latest
+        ports:
+        - containerPort: 5000
+
+      - name: ping-redis
+        image: redis
+        ports:
+        - containerPort: 6379

@@ -9,7 +9,7 @@ To run the app run the commands:
 
 ```bash
 	docker build -t flask-ping:latest .                      # Build the docker image
-	docker run -d -p 5000:5000 --name Ping-flask flask-ping  # Run the Flask container
+	docker run -d -p 5000:5000 --name ping-flask flask-ping  # Run the Flask container
 ```
 Flags: -t: target name. -d: daemon. -p: redirect local port to docker port 
 

@@ -57,4 +57,9 @@ docker-compose down will shut down the whole env.
 
 https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v4_docker_compose
 
+## Kubernate it!
+Now we will migrate the docker-compose to Kubernetes. We will create separate deploy and service file for the app and the db.
+This will create each component in a separate pod, yet in the same cluster. 
+This will also allow to crerate multiple replicates of the stateless Flask pods while the Redis will have one stateful pod.
+In the example bellow we will deploy 3 replicas of the Falsk pod and one Redis pod. 
 

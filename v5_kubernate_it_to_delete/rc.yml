@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ReplicationController
+metadata: 
+  name: ping-rc
+spec:
+  replicas: 6
+  selector:
+    app: ping-pong
+  template:
+    metadata:
+      labels:
+        app: ping-pong
+    spec:
+      containers:
+      - name: flask-ping
+        image: natanbs/flask-ping:latest
+        ports:
+        - containerPort: 5000
+
+      - name: redis-ping
+        image: redis
+        ports:
+        - containerPort: 6379

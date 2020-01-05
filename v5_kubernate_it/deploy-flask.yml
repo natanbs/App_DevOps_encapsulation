@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-ping
+spec:
+  selector:
+    matchLabels:
+      app: flask-ping
+  replicas: 3
+  minReadySeconds: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: flask-ping
+    spec:
+      containers:
+      - name: flask-ping
+        image: natanbs/flask-ping:latest
+        ports:
+        - containerPort: 5000
