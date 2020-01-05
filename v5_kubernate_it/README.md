@@ -1,4 +1,4 @@
-# Ping pong
+# App_DevOps_encapsulation
 ## Kubernated Flask with Redis 
 
 Kubernates with Flask apps that query ping to a Redis db (separate pods) and returns pong counts.
