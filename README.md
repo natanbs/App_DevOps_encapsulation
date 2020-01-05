@@ -73,4 +73,4 @@ pvc - The logical layer that communicates between the pod and the pv. This layer
 
 Once the pv and pvc and set, then you can set the volume parameters within the pod in the deploy-redis.yml file.
 
-
+https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v6_pv_pvc_storage
