@@ -55,6 +55,9 @@ https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v4_docker_compos
 Now we will migrate the docker-compose to Kubernetes. We will create separate deploy and service file for the app and the db.
 This will create each component in a separate pod, yet in the same cluster. 
 This will also allow to crerate multiple replicates of the stateless Flask pods while the Redis will have one stateful pod.
+
+In order to pass the redis-host and redis-password to the Flask app from outside of the pods, ConnfigMap was used to pass these vars to the os env.
+
 In the example bellow we will deploy 3 replicas of the Falsk pod and one Redis pod. 
 
 https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v5_kubernate_it
