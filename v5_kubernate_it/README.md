@@ -8,6 +8,8 @@ replicas: 3
 
 The env is created in the namespace ping-ns (namespace.yml)
 
+Also added ConfigMap (redis-confmap.yml) to allow the redis_host and the redis_password configurable from outside of the pod.
+
 To run the app run the commands:
 
 ```bash

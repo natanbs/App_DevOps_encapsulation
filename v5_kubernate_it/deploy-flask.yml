@@ -21,6 +21,17 @@ spec:
     spec:
       containers:
       - name: flask-ping
-        image: natanbs/flask-ping:latest
+        image: natanbs/flask-ping:v1.0.1
         ports:
         - containerPort: 5000
+        env:
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: redis-conf
+              key: redis-host
+        - name: REDIS_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: redis-conf
+              key: redis-pass
