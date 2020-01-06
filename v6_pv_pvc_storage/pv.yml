@@ -6,8 +6,8 @@ spec:
   capacity:
     storage: 10Gi
   accessModes:
-    - ReadWriteOnce
-  storageClassName: slow
+    - ReadWriteMany
+  storageClassName: standard
   gcePersistentDisk:
     pdName: db-disk
     fsType: ext4

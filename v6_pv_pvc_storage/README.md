@@ -19,7 +19,7 @@ To check the service IP:
 ```
 
 Now if you uninstall the flask and reinstall it from scratch, the data will be saved.
-Once the app is up again, new pings will accumulate to the previous count.
+Once the app is up again, new pings will accumulate to the previous count which would not be reset.
 
 After the containers are up and running, go to the url:
 
