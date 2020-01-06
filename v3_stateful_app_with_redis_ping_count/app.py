@@ -2,7 +2,8 @@ from flask import Flask
 import redis
 app = Flask(__name__)
 
-redis_host = "192.168.1.110"
+#redis_host = "192.168.1.110"
+redis_host = "ping-redis"
 redis_port = 6379
 redis_password = ""
 
