@@ -77,3 +77,80 @@ pvc - The logical layer that communicates between the pod and the pv. This layer
 Once the pv and pvc and set, then you can set the volume parameters within the pod in the deploy-redis.yml file.
 
 https://github.com/natanbs/App_DevOps_encapsulation/tree/master/v6_pv_pvc_storage
+
+## Helm it!
+So what is Helm? what is it good for?
+- Simplify the K8s installations
+- Centralize the installations
+- Source of pre-packaged installations (apt-get style) - only need to manifest the customizewd delta.
+- Configuration templating of the projects - Simplifies the project maintainace.
+- Template sharing can eliminate duplicated efforts.
+- Independency deployment the envs (prod / sandbox / qa are sheer to the deployment)
+- Deploying speed
+
+So first we will migrate our Flask original hardcoded code to helm. 
+We will copy the original deployment and service manifests to the helm template folder.
+
+For Redis, we will install a pre-packaged installation directly from helm:
+```bash
+        helm install redis stable/redis -n ping-ns
+```
+As the Redis installation is cached, you will not find any files.
+To view the configurations:
+
+```bash
+        helm get all redis -n ping-ns 
+```
+
+You can override values with with your customized file.
+For example to disable the Redis cluster, you can create a redis-config.yaml file:
+Install the apps:
+```
+cluster:
+  enabled: false
+```
+The install:
+```bash
+        helm install redis-ping ./redis-ping -n ping-ns -f redis-config.yaml
+```
+
+ConfigMap - 
+Is used to configure all the pods in one place. 
+In this example a file was used to set the Redis hostname, port and encrypted password in flask-ping/templates/redis-confmap.yaml
+```
+data:
+  redis-host: "redis-master"
+  redis-port: "6379"
+  redis-pass: "ZjZWU3dsUDlQcA=="
+```
+
+These values are implemented within the Flask deployment file:
+```
+        env:
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: redis-conf
+              key: redis-host
+        - name: REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: redis-conf
+              key: redis-port
+        - name: REDIS_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: redis-conf
+              key: redis-pass
+```
+Then the REDIS_HOST, REDIS_PORT and REDIS_PASSWORD values are set in the pod's os env:
+
+```
+kubectl exec -it flask-ping-75bc87b8d7-44vh8 bash -n ping-ns
+
+root@flask-ping-75bc87b8d7-44vh8:/# env | grep REDIS | grep -v MASTER
+REDIS_PASSWORD=ZjZWU3dsUDlQcA==
+REDIS_HOST=redis-master
+REDIS_PORT=6379
+```
+
