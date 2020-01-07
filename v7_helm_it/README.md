@@ -59,5 +59,42 @@ The install:
         helm install redis-ping ./redis-ping -n ping-ns -f redis-config.yaml
 ```
 
+ConfigMap -
+Is used to configure all the pods in one place.
+In this example a file was used to set the Redis hostname, port and encrypted password in flask-ping/templates/redis-confmap.yaml
+```
+data:
+  redis-host: "redis-master"
+  redis-port: "6379"
+  redis-pass: "ZjZWU3dsUDlQcA=="
+```
 
+These values are implemented within the Flask deployment file:
+```
+        env:
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: redis-conf
+              key: redis-host
+        - name: REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: redis-conf
+              key: redis-port
+        - name: REDIS_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: redis-conf
+              key: redis-pass
+```
+Then the REDIS_HOST, REDIS_PORT and REDIS_PASSWORD values are set in the pod's os env:
 
+```
+kubectl exec -it flask-ping-75bc87b8d7-44vh8 bash -n ping-ns
+
+root@flask-ping-75bc87b8d7-44vh8:/# env | grep REDIS | grep -v MASTER
+REDIS_PASSWORD=ZjZWU3dsUDlQcA==
+REDIS_HOST=redis-master
+REDIS_PORT=6379
+```
