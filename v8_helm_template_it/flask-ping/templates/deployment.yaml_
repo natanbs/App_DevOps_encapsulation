@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-ping
+  namespace: ping-ns
+spec:
+  selector:
+    matchLabels:
+      app: flask-ping
+  replicas: 3
+  minReadySeconds: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: flask-ping
+    spec:
+      containers:
+      - name: flask-ping
+        image: natanbs/flask-ping:v1.0.5
+        ports:
+        - containerPort: 5000
+        env:
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: redis-conf
+              key: redis-host
+        - name: REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: redis-conf
+              key: redis-port
+        - name: REDIS_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: redis-conf
+              key: redis-pass
