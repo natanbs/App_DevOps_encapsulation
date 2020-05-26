@@ -1,0 +1,18 @@
+{
+  "apiVersion": "v1",
+  "kind": "Namespace",
+  "metadata": {
+    "creationTimestamp": "2020-04-30T21:05:13Z",
+    "deletionTimestamp": "2020-04-30T21:11:11Z",
+    "name": "ping-ns",
+    "resourceVersion": "37909735",
+    "selfLink": "/api/v1/namespaces/ping-ns",
+    "uid": "e0d8f884-4881-4a68-b7bc-f1c93c778ed2"
+  },
+  "spec": {
+    "finalizers": []
+  },
+  "status": {
+    "phase": "Terminating"
+  }
+}
