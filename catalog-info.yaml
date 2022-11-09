@@ -5,3 +5,6 @@ metadata:
   description: App_DevOps_encapsulation
   annotations:
     github.com/project-slug: 'natanbs/App_DevOps_encapsulation'
+spec:
+  type: website
+  lifecycle: experimental
