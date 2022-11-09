@@ -2,11 +2,6 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: App_DevOps_encapsulation
-  description: |
-    App_DevOps_encapsulation
+  description: App_DevOps_encapsulation
   annotations:
-    gitlab.com/project-slug: natanbs/App_DevOps_encapsulation
-    gitlab.com/project-id: "24928734"
-    backstage.io/techdocs-ref: dir:.
-    backstage.io/managed-by-location: url:https://gitlab.com/tikalk.com/internal/octopus/master/catalog-info.yaml
-    # lighthouse.com/website-url: http://pingalicious.infra.tikalk.dev
+    github.com/project-slug: 'natanbs/App_DevOps_encapsulation'
